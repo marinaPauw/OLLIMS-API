@@ -28,8 +28,5 @@ namespace OLLIMS_API.Models
         [ForeignKey(nameof(MeasurementId))]
         [InverseProperty(nameof(Measurements.Instruments))]
         public virtual Measurements Measurement { get; set; }
-        [ForeignKey(nameof(Sopid))]
-        [InverseProperty("Instruments")]
-        public virtual Sop Sop { get; set; }
     }
 }

@@ -37,9 +37,9 @@ namespace OLLIMS_API.Repository
             return _db.Sop.OrderBy(x => x.Id).ToList();
         }
 
-        public ICollection<Sop> GetSopsForInstrument()
+        public ICollection<Sop> GetSopsForInstrument(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Sop.Where(x => x.Id == Id).OrderBy(x => x.Id).ToList();
         }
 
         public bool Save()

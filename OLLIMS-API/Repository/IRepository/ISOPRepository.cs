@@ -9,7 +9,7 @@ namespace OLLIMS_API.Repository.IRepository
     public interface ISopRepository
     {
         ICollection<Sop> GetSops();
-        ICollection<Sop> GetSopsForInstrument();
+        ICollection<Sop> GetSopsForInstrument(int InstrumentId);
         Sop GetSop(int SopId);
 
         bool SopExists(int Id);

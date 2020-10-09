@@ -45,10 +45,6 @@ namespace OLLIMS_API.Models
                     .HasForeignKey(d => d.MeasurementId)
                     .HasConstraintName("FK__instrumen__measu__5535A963");
 
-                entity.HasOne(d => d.Sop)
-                    .WithMany(p => p.Instruments)
-                    .HasForeignKey(d => d.Sopid)
-                    .HasConstraintName("FK__instrumen__SOPId__4F7CD00D");
             });
 
             modelBuilder.Entity<MeasurementValues>(entity =>

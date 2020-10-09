@@ -19,7 +19,7 @@ namespace OLLIMS_API.Repository.IRepository
         bool UpdateLaboratory(int Id);
         bool DeleteLaboratory(int Id);
 
-        bool Save()
+        bool Save();
 
     }
 }

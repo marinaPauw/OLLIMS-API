@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("accessLevels")]
-    public partial class AccessLevels
+    public partial class AccessLevel
     {
         [Key]
         [Column("id")]

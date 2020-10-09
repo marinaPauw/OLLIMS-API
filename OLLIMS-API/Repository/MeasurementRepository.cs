@@ -16,7 +16,7 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateMeasurement(Measurements measurement)
+        public bool CreateMeasurement(Measurement measurement)
         {
             _db.Measurements.Add(measurement);
             return Save();
@@ -28,17 +28,17 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public Measurements GetMeasurement(int Id)
+        public Measurement GetMeasurement(int Id)
         {
             return _db.Measurements.FirstOrDefault(x => x.Id == Id);
         }
 
-        public ICollection<Measurements> GetMeasurements()
+        public ICollection<Measurement> GetMeasurements()
         {
             return _db.Measurements.OrderBy(x => x.Name).ToList();
         }
 
-        public ICollection<Measurements> GetMeasurementsForInstrument(int Id)
+        public ICollection<Measurement> GetMeasurementsForInstrument(int Id)
         {
             return _db.Measurements.Where(x => x.InstrumentId == Id).OrderBy(x => x.Id).ToList();
         }

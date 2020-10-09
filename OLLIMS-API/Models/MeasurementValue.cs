@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("measurementValues")]
-    public partial class MeasurementValues
+    public partial class MeasurementValue
     {
         [Key]
         [Column("id")]
@@ -21,7 +21,7 @@ namespace OLLIMS_API.Models
         public DateTime? LoggedDateTime { get; set; }
 
         [ForeignKey(nameof(MeasurementId))]
-        [InverseProperty(nameof(Measurements.MeasurementValues))]
-        public virtual Measurements Measurement { get; set; }
+        [InverseProperty(nameof(Models.Measurement.MeasurementValues))]
+        public virtual Measurement Measurement { get; set; }
     }
 }

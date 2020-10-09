@@ -8,8 +8,8 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface IPersonelRepository
     {
-        ICollection<Personel> GetPersonel();
-        Personel GetPerson(int PersonelId);
+        ICollection<Employee> GetPersonel();
+        Employee GetPerson(int PersonelId);
 
         bool PersonelExists(int Id);
 

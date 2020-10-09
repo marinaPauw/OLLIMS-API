@@ -6,12 +6,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("measurements")]
-    public partial class Measurements
+    public partial class Measurement
     {
-        public Measurements()
+        public Measurement()
         {
-            Instruments = new HashSet<Instruments>();
-            MeasurementValues = new HashSet<MeasurementValues>();
+            Instruments = new HashSet<Instrument>();
+            MeasurementValues = new HashSet<MeasurementValue>();
         }
 
         [Key]
@@ -32,8 +32,8 @@ namespace OLLIMS_API.Models
         public DateTime? UpdatedAt { get; set; }
 
         [InverseProperty("Measurement")]
-        public virtual ICollection<Instruments> Instruments { get; set; }
+        public virtual ICollection<Instrument> Instruments { get; set; }
         [InverseProperty("Measurement")]
-        public virtual ICollection<MeasurementValues> MeasurementValues { get; set; }
+        public virtual ICollection<MeasurementValue> MeasurementValues { get; set; }
     }
 }

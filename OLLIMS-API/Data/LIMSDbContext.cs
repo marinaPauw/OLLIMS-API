@@ -15,25 +15,25 @@ namespace OLLIMS_API.Models
         {
         }
 
-        public virtual DbSet<AccessLevels> AccessLevels { get; set; }
-        public virtual DbSet<Instruments> Instruments { get; set; }
-        public virtual DbSet<Laboratories> Laboratories { get; set; }
-        public virtual DbSet<MeasurementValues> MeasurementValues { get; set; }
-        public virtual DbSet<Measurements> Measurements { get; set; }
-        public virtual DbSet<Personel> Personel { get; set; }
+        public virtual DbSet<AccessLevel> AccessLevels { get; set; }
+        public virtual DbSet<Instrument> Instruments { get; set; }
+        public virtual DbSet<Laboratory> Laboratories { get; set; }
+        public virtual DbSet<MeasurementValue> MeasurementValues { get; set; }
+        public virtual DbSet<Measurement> Measurements { get; set; }
+        public virtual DbSet<Employee> Personel { get; set; }
         public virtual DbSet<Sop> Sop { get; set; }
-        public virtual DbSet<SopTrainees> SopTrainees { get; set; }
+        public virtual DbSet<SopTrainee> SopTrainees { get; set; }
 
         
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AccessLevels>(entity =>
+            modelBuilder.Entity<AccessLevel>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });
 
-            modelBuilder.Entity<Instruments>(entity =>
+            modelBuilder.Entity<Instrument>(entity =>
             {
                 entity.HasOne(d => d.Laboratory)
                     .WithMany(p => p.Instruments)
@@ -47,7 +47,7 @@ namespace OLLIMS_API.Models
 
             });
 
-            modelBuilder.Entity<MeasurementValues>(entity =>
+            modelBuilder.Entity<MeasurementValue>(entity =>
             {
                 entity.HasOne(d => d.Measurement)
                     .WithMany(p => p.MeasurementValues)
@@ -55,7 +55,7 @@ namespace OLLIMS_API.Models
                     .HasConstraintName("FK__measureme__measu__5629CD9C");
             });
 
-            modelBuilder.Entity<SopTrainees>(entity =>
+            modelBuilder.Entity<SopTrainee>(entity =>
             {
                 entity.HasOne(d => d.Person)
                     .WithMany(p => p.SopTrainees)

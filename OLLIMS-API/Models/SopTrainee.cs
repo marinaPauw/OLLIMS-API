@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("SOP_trainees")]
-    public partial class SopTrainees
+    public partial class SopTrainee
     {
         [Key]
         [Column("id")]
@@ -22,8 +22,8 @@ namespace OLLIMS_API.Models
         public DateTime? TrainedAt { get; set; }
 
         [ForeignKey(nameof(PersonId))]
-        [InverseProperty(nameof(Personel.SopTrainees))]
-        public virtual Personel Person { get; set; }
+        [InverseProperty(nameof(Employee.SopTrainees))]
+        public virtual Employee Person { get; set; }
         [ForeignKey(nameof(Sopid))]
         [InverseProperty("SopTrainees")]
         public virtual Sop Sop { get; set; }

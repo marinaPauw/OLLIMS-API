@@ -8,14 +8,14 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface IMeasurementRepository
     {
-        ICollection<Measurements> GetMeasurements();
-        ICollection<Measurements> GetMeasurementsForInstrument(int InstrumentId);
-        Measurements GetMeasurement(int MeasurementId);
+        ICollection<Measurement> GetMeasurements();
+        ICollection<Measurement> GetMeasurementsForInstrument(int InstrumentId);
+        Measurement GetMeasurement(int MeasurementId);
 
         bool MeasurementExists(int Id);
         bool MeasurementExists(string name);
 
-        bool CreateMeasurement(Measurements measurements);
+        bool CreateMeasurement(Measurement measurements);
 
         bool UpdateMeasurement(int Id);
         bool DeleteMeasurement(int Id);

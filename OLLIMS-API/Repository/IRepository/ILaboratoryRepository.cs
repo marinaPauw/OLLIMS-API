@@ -8,13 +8,13 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface ILaboratoryRepository
     {
-        ICollection<Laboratories> GetLaboratories();
-        Laboratories GetLaboratory(int LaboratoryId);
+        ICollection<Laboratory> GetLaboratories();
+        Laboratory GetLaboratory(int LaboratoryId);
 
         bool LaboratoryExists(int Id);
         bool LaboratoryExists(string name);
 
-        bool CreateLaboratory(Laboratories laboratory);
+        bool CreateLaboratory(Laboratory laboratory);
 
         bool UpdateLaboratory(int Id);
         bool DeleteLaboratory(int Id);

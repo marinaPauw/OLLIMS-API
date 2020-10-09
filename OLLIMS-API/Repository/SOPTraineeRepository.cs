@@ -15,7 +15,7 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateSopTrainees(SopTrainees st)
+        public bool CreateSopTrainees(SopTrainee st)
         {
             _db.SopTrainees.Add(st);
             return Save();
@@ -27,17 +27,17 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public ICollection<Personel> GetAllTraineesForSOP(int Id)
+        public ICollection<Employee> GetAllTraineesForSOP(int Id)
         {
             return _db.SopTrainees.Where(x => x.Sop.Id == Id).OrderBy(x => x.Sop).Select(x=>x.Person).ToList();
         }
 
-        public SopTrainees GetSopTrainee(int Id)
+        public SopTrainee GetSopTrainee(int Id)
         {
             return _db.SopTrainees.FirstOrDefault(x => x.Id == Id);
         }
 
-        public ICollection<SopTrainees> GetSopTrainees()
+        public ICollection<SopTrainee> GetSopTrainees()
         {
             return _db.SopTrainees.OrderBy(x => x.Id).ToList();
         }

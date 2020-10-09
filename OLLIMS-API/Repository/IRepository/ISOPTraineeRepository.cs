@@ -8,13 +8,13 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface ISopTraineesRepository
     {
-        ICollection<SopTrainees> GetSopTrainees();
-        ICollection<Personel> GetAllTraineesForSOP(int Id);
-        SopTrainees GetSopTrainee(int SopTraineesId);
+        ICollection<SopTrainee> GetSopTrainees();
+        ICollection<Employee> GetAllTraineesForSOP(int Id);
+        SopTrainee GetSopTrainee(int SopTraineesId);
 
         bool SopTraineesExists(int Id);
 
-        bool CreateSopTrainees(SopTrainees st);
+        bool CreateSopTrainees(SopTrainee st);
 
         bool UpdateSopTrainees(int Id);
         bool DeleteSopTrainees(int Id);

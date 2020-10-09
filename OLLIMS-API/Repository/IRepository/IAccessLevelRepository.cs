@@ -8,13 +8,13 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface IAccessLevelsRepository
     {
-        ICollection<AccessLevels> GetAccessLevels();
-        AccessLevels GetAccessLevel(int AccessLevelsId);
+        ICollection<AccessLevel> GetAccessLevels();
+        AccessLevel GetAccessLevel(int AccessLevelsId);
 
         bool AccessLevelsExists(int Id);
         bool AccessLevelsExists(string name);
 
-        bool CreateAccessLevels(AccessLevels al);
+        bool CreateAccessLevels(AccessLevel al);
 
         bool UpdateAccessLevels(int Id);
         bool DeleteAccessLevels(int Id);

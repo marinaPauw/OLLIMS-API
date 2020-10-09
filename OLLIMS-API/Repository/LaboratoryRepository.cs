@@ -14,7 +14,7 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateLaboratory(Laboratories laboratory)
+        public bool CreateLaboratory(Laboratory laboratory)
         {
             _db.Laboratories.Add(laboratory);
             return Save();
@@ -26,12 +26,12 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public ICollection<Laboratories> GetLaboratories()
+        public ICollection<Laboratory> GetLaboratories()
         {
             return _db.Laboratories.OrderBy(x=>x.LaboratoryName).ToList();
         }
 
-        public Laboratories GetLaboratory(int laboratoryId)
+        public Laboratory GetLaboratory(int laboratoryId)
         {
             return _db.Laboratories.FirstOrDefault(x => x.Id == laboratoryId);
         }

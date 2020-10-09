@@ -6,11 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("personel")]
-    public partial class Personel
+    public partial class Employee
     {
-        public Personel()
+        public Employee()
         {
-            SopTrainees = new HashSet<SopTrainees>();
+            SopTrainees = new HashSet<SopTrainee>();
         }
 
         [Key]
@@ -29,6 +29,6 @@ namespace OLLIMS_API.Models
         public int? AccessLevelId { get; set; }
 
         [InverseProperty("Person")]
-        public virtual ICollection<SopTrainees> SopTrainees { get; set; }
+        public virtual ICollection<SopTrainee> SopTrainees { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace OLLIMS_API.Repository
             return _db.AccessLevels.Any(x => x.Name == name);
         }
 
-        public bool CreateAccessLevels(AccessLevels al)
+        public bool CreateAccessLevels(AccessLevel al)
         {
             _db.AccessLevels.Add(al);
             return Save();
@@ -37,12 +37,12 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public AccessLevels GetAccessLevel(int AccessLevelsId)
+        public AccessLevel GetAccessLevel(int AccessLevelsId)
         {
             return _db.AccessLevels.FirstOrDefault(x => x.Id == AccessLevelsId);
         }
 
-        public ICollection<AccessLevels> GetAccessLevels()
+        public ICollection<AccessLevel> GetAccessLevels()
         {
             return _db.AccessLevels.OrderBy(x => x.Name).ToList();
         }

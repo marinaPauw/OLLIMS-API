@@ -16,7 +16,7 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateInstrument(Instruments instrument)
+        public bool CreateInstrument(Instrument instrument)
         {
             _db.Instruments.Add(instrument);
             return Save();
@@ -28,17 +28,17 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public Instruments GetInstrument(int InstrumentId)
+        public Instrument GetInstrument(int InstrumentId)
         {
             return _db.Instruments.FirstOrDefault(x => x.Id == InstrumentId);
         }
 
-        public ICollection<Instruments> GetInstruments()
+        public ICollection<Instrument> GetInstruments()
         {
             return _db.Instruments.OrderBy(x => x.Id).ToList();
         }
 
-        public ICollection<Instruments> GetInstrumentsInLab(int Id)
+        public ICollection<Instrument> GetInstrumentsInLab(int Id)
         {
             return _db.Instruments.Where(x=>x.LaboratoryId==Id).OrderBy(x => x.Id).ToList();
         }

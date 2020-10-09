@@ -10,7 +10,7 @@ namespace OLLIMS_API.Models
     {
         public Sop()
         {
-            SopTrainees = new HashSet<SopTrainees>();
+            SopTrainees = new HashSet<SopTrainee>();
         }
 
         [Key]
@@ -38,6 +38,6 @@ namespace OLLIMS_API.Models
         public int InstrumentId { get; set; }
 
         [InverseProperty("Sop")]
-        public virtual ICollection<SopTrainees> SopTrainees { get; set; }
+        public virtual ICollection<SopTrainee> SopTrainees { get; set; }
     }
 }

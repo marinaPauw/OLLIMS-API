@@ -27,12 +27,12 @@ namespace OLLIMS_API.Repository
             return Save();
         }
 
-        public Personel GetPerson(int Id)
+        public Employee GetPerson(int Id)
         {
             return _db.Personel.FirstOrDefault(x => x.Id == Id);
         }
 
-        public ICollection<Personel> GetPersonel()
+        public ICollection<Employee> GetPersonel()
         {
             return _db.Personel.OrderBy(x => x.Id).ToList();
         }

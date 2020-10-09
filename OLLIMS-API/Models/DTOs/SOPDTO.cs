@@ -16,6 +16,6 @@ namespace OLLIMS_API.Models
 
         public int InstrumentId { get; set; }
 
-        public virtual ICollection<SopTrainee> SopTrainees { get; set; }
+        public virtual ICollection<SopTraineeDTO> SopTrainees { get; set; }
     }
 }

@@ -12,6 +12,6 @@ namespace OLLIMS_API.Models
         public string LaboratoryName { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<Instrument> Instruments { get; set; }
+        public virtual ICollection<InstrumentDTO> Instruments { get; set; }
     }
 }

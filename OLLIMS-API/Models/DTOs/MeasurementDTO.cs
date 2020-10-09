@@ -13,7 +13,7 @@ namespace OLLIMS_API.Models
         public string Name { get; set; }
         public double? LowerLimit { get; set; }
         public double? UpperLimit { get; set; }
-        public virtual ICollection<Instrument> Instruments { get; set; }
-        public virtual ICollection<MeasurementValue> MeasurementValues { get; set; }
+        public virtual ICollection<InstrumentDTO> Instruments { get; set; }
+        public virtual ICollection<MeasurementValueDTO> MeasurementValues { get; set; }
     }
 }

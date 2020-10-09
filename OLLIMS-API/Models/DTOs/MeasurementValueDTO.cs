@@ -12,6 +12,6 @@ namespace OLLIMS_API.Models
         public double? Value { get; set; }
         public DateTime? MeasuredDatetime { get; set; }
         public DateTime? LoggedDateTime { get; set; }
-        public virtual Measurement Measurement { get; set; }
+        public virtual MeasurementDTO Measurement { get; set; }
     }
 }

@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OLLIMS_API.Models;
+using AutoMapper;
 
 namespace OLLIMS_API
 {
@@ -30,6 +31,7 @@ namespace OLLIMS_API
             services.AddControllers();
             services.AddDbContext<LIMSDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DBConnect")));
+            services.AddAutoMapper(typeof(Mapper));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

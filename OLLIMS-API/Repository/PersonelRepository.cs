@@ -9,44 +9,49 @@ namespace OLLIMS_API.Repository
 {
     public class PersonelRepository : IPersonelRepository
     {
-        public bool CreatePersonel()
+        private readonly LIMSDbContext _db;
+
+        public PersonelRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreatePersonel(Sop sop)
+        {
+            _db.Sop.Add(sop);
+            return Save();
         }
 
         public bool DeletePersonel(int Id)
         {
-            throw new NotImplementedException();
+            _db.Personel.Remove(_db.Personel.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
-        public Personel GetPerson(int PersonelId)
+        public Personel GetPerson(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Personel.FirstOrDefault(x => x.Id == Id);
         }
 
         public ICollection<Personel> GetPersonel()
         {
-            throw new NotImplementedException();
+            return _db.Personel.OrderBy(x => x.Id).ToList();
         }
 
         public bool PersonelExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Personel.Any(x => x.Id == Id);
         }
 
-        public bool PersonelExists(string name)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool UpdatePersonel(int Id)
         {
-            throw new NotImplementedException();
+            _db.Personel.Update(_db.Personel.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

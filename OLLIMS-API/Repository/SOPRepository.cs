@@ -9,24 +9,32 @@ namespace OLLIMS_API.Repository
 {
     public class SOPRepository : ISopRepository
     {
-        public bool CreateSop()
+        private readonly LIMSDbContext _db;
+
+        public SOPRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateSop(Sop sop)
+        {
+            _db.Sop.Add(sop);
+            return Save();
         }
 
         public bool DeleteSop(int Id)
         {
-            throw new NotImplementedException();
+            _db.Sop.Remove(_db.Sop.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
-        public Sop GetSop(int SopId)
+        public Sop GetSop(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Sop.FirstOrDefault(x => x.Id == Id);
         }
 
         public ICollection<Sop> GetSops()
         {
-            throw new NotImplementedException();
+            return _db.Sop.OrderBy(x => x.Id).ToList();
         }
 
         public ICollection<Sop> GetSopsForInstrument()
@@ -36,22 +44,23 @@ namespace OLLIMS_API.Repository
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool SopExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Sop.Any(x => x.Id == Id);
         }
 
         public bool SopExists(string name)
         {
-            throw new NotImplementedException();
+            return _db.Sop.Any(x => x.Name.ToLower().Trim() == name.ToLower().Trim());
         }
 
         public bool UpdateSop(int Id)
         {
-            throw new NotImplementedException();
+            _db.Sop.Update(_db.Sop.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

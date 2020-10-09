@@ -9,49 +9,54 @@ namespace OLLIMS_API.Repository
 {
     public class MeasurementValueRepository : IMeasurementValueRepository
     {
-        public bool CreateMeasurementValue()
+        private readonly LIMSDbContext _db;
+
+        public MeasurementValueRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateMeasurementValue(MeasurementValues value)
+        {
+            _db.MeasurementValues.Add(value);
+            return Save();
         }
 
         public bool DeleteMeasurementValue(int Id)
         {
-            throw new NotImplementedException();
+            _db.MeasurementValues.Remove(_db.MeasurementValues.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
         public MeasurementValues GetMeasurementValue(int MeasurementValueId)
         {
-            throw new NotImplementedException();
+            return _db.MeasurementValues.FirstOrDefault(x => x.Id == MeasurementValueId);
         }
 
         public ICollection<MeasurementValues> GetMeasurementValues()
         {
-            throw new NotImplementedException();
+            return _db.MeasurementValues.OrderBy(x => x.Measurement).ToList();
         }
 
-        public ICollection<MeasurementValues> GetMeasurementValuesForMeasurement()
+        public ICollection<MeasurementValues> GetMeasurementValuesForMeasurement(int measurementId)
         {
-            throw new NotImplementedException();
+            return _db.MeasurementValues.Where(x => x.MeasurementId == measurementId).OrderBy(x => x.Id).ToList();
         }
 
         public bool MeasurementValueExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.MeasurementValues.Any(x => x.Id == Id);
         }
 
-        public bool MeasurementValueExists(string name)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool UpdateMeasurementValue(int Id)
         {
-            throw new NotImplementedException();
+            _db.MeasurementValues.Update(_db.MeasurementValues.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

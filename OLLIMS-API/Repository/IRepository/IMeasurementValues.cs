@@ -9,13 +9,12 @@ namespace OLLIMS_API.Repository.IRepository
     public interface IMeasurementValueRepository
     {
         ICollection<MeasurementValues> GetMeasurementValues();
-        ICollection<MeasurementValues> GetMeasurementValuesForMeasurement();
+        ICollection<MeasurementValues> GetMeasurementValuesForMeasurement(int measurementId);
         MeasurementValues GetMeasurementValue(int MeasurementValueId);
 
         bool MeasurementValueExists(int Id);
-        bool MeasurementValueExists(string name);
 
-        bool CreateMeasurementValue();
+        bool CreateMeasurementValue(MeasurementValues value);
 
         bool UpdateMeasurementValue(int Id);
         bool DeleteMeasurementValue(int Id);

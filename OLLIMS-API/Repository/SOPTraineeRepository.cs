@@ -9,49 +9,55 @@ namespace OLLIMS_API.Repository
 {
     public class SOPTraineeRepository : ISopTraineesRepository
     {
-        public bool CreateSopTrainees()
+        private readonly LIMSDbContext _db;
+
+        public SOPTraineeRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateSopTrainees(SopTrainees st)
+        {
+            _db.SopTrainees.Add(st);
+            return Save();
         }
 
         public bool DeleteSopTrainees(int Id)
         {
-            throw new NotImplementedException();
+            _db.SopTrainees.Remove(_db.SopTrainees.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
-        public ICollection<SopTrainees> GetAllTraineesForSOP()
+        public ICollection<Personel> GetAllTraineesForSOP(int Id)
         {
-            throw new NotImplementedException();
+            return _db.SopTrainees.Where(x => x.Sop.Id == Id).OrderBy(x => x.Sop).Select(x=>x.Person).ToList();
         }
 
-        public SopTrainees GetSopTrainee(int SopTraineesId)
+        public SopTrainees GetSopTrainee(int Id)
         {
-            throw new NotImplementedException();
+            return _db.SopTrainees.FirstOrDefault(x => x.Id == Id);
         }
 
         public ICollection<SopTrainees> GetSopTrainees()
         {
-            throw new NotImplementedException();
+            return _db.SopTrainees.OrderBy(x => x.Id).ToList();
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool SopTraineesExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.SopTrainees.Any(x => x.Id == Id);
         }
 
-        public bool SopTraineesExists(string name)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public bool UpdateSopTrainees(int Id)
         {
-            throw new NotImplementedException();
+            _db.SopTrainees.Update(_db.SopTrainees.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

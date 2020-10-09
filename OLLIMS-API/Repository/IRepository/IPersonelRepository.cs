@@ -12,9 +12,8 @@ namespace OLLIMS_API.Repository.IRepository
         Personel GetPerson(int PersonelId);
 
         bool PersonelExists(int Id);
-        bool PersonelExists(string name);
 
-        bool CreatePersonel();
+        bool CreatePersonel(Sop sop);
 
         bool UpdatePersonel(int Id);
         bool DeletePersonel(int Id);

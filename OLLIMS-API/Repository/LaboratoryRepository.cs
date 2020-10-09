@@ -9,44 +9,53 @@ namespace OLLIMS_API.Repository
 {
     public class LaboratoryRepository : ILaboratoryRepository
     {
-        public bool CreateLaboratory()
+        private readonly LIMSDbContext _db;
+        public LaboratoryRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateLaboratory(Laboratories laboratory)
+        {
+            _db.Laboratories.Add(laboratory);
+            return Save();
         }
 
         public bool DeleteLaboratory(int Id)
         {
-            throw new NotImplementedException();
+            _db.Laboratories.Remove(_db.Laboratories.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
         public ICollection<Laboratories> GetLaboratories()
         {
-            throw new NotImplementedException();
+            return _db.Laboratories.OrderBy(x=>x.LaboratoryName).ToList();
         }
 
-        public Laboratories GetLaboratory(int LaboratoryId)
+        public Laboratories GetLaboratory(int laboratoryId)
         {
-            throw new NotImplementedException();
+            return _db.Laboratories.FirstOrDefault(x => x.Id == laboratoryId);
         }
 
         public bool LaboratoryExists(int Id)
         {
-            throw new NotImplementedException();
+
+            return _db.Laboratories.Any(x => x.Id == Id);
         }
 
         public bool LaboratoryExists(string name)
         {
-            throw new NotImplementedException();
+            return _db.Laboratories.Any(x => x.LaboratoryName.ToLower().Trim() == name.ToLower().Trim());
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool UpdateLaboratory(int Id)
         {
-            throw new NotImplementedException();
+            _db.Laboratories.Update(_db.Laboratories.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

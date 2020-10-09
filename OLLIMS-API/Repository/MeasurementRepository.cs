@@ -7,51 +7,61 @@ using System.Threading.Tasks;
 
 namespace OLLIMS_API.Repository
 {
+
     public class MeasurementRepository : IMeasurementRepository
     {
-        public bool CreateMeasurement()
+        private readonly LIMSDbContext _db;
+
+        public MeasurementRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateMeasurement(Measurements measurement)
+        {
+            _db.Measurements.Add(measurement);
+            return Save();
         }
 
         public bool DeleteMeasurement(int Id)
         {
-            throw new NotImplementedException();
+            _db.Measurements.Remove(_db.Measurements.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
-        public Measurements GetMeasurement(int MeasurementId)
+        public Measurements GetMeasurement(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Measurements.FirstOrDefault(x => x.Id == Id);
         }
 
         public ICollection<Measurements> GetMeasurements()
         {
-            throw new NotImplementedException();
+            return _db.Measurements.OrderBy(x => x.Name).ToList();
         }
 
-        public ICollection<Measurements> GetMeasurementsForInstrument()
+        public ICollection<Measurements> GetMeasurementsForInstrument(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Measurements.Where(x => x.InstrumentId == Id).OrderBy(x => x.Id).ToList();
         }
 
         public bool MeasurementExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Measurements.Any(x => x.Id == Id);
         }
 
         public bool MeasurementExists(string name)
         {
-            throw new NotImplementedException();
+            return _db.Measurements.Any(x => x.Name.ToLower().Trim() == name.ToLower().Trim());
         }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool UpdateMeasurement(int Id)
         {
-            throw new NotImplementedException();
+            _db.Measurements.Update(_db.Measurements.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

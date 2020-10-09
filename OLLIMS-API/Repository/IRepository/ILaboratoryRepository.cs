@@ -14,7 +14,7 @@ namespace OLLIMS_API.Repository.IRepository
         bool LaboratoryExists(int Id);
         bool LaboratoryExists(string name);
 
-        bool CreateLaboratory();
+        bool CreateLaboratory(Laboratories laboratory);
 
         bool UpdateLaboratory(int Id);
         bool DeleteLaboratory(int Id);

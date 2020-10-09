@@ -7,51 +7,57 @@ using System.Threading.Tasks;
 
 namespace OLLIMS_API.Repository
 {
+
     public class InstrumentRepository : IInstrumentRepository
     {
-        public bool CreateInstrument()
+        private readonly LIMSDbContext _db;
+
+        public InstrumentRepository(LIMSDbContext db)
         {
-            throw new NotImplementedException();
+            _db = db;
+        }
+        public bool CreateInstrument(Instruments instrument)
+        {
+            _db.Instruments.Add(instrument);
+            return Save();
         }
 
         public bool DeleteInstrument(int Id)
         {
-            throw new NotImplementedException();
+            _db.Instruments.Remove(_db.Instruments.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
 
         public Instruments GetInstrument(int InstrumentId)
         {
-            throw new NotImplementedException();
+            return _db.Instruments.FirstOrDefault(x => x.Id == InstrumentId);
         }
 
         public ICollection<Instruments> GetInstruments()
         {
-            throw new NotImplementedException();
+            return _db.Instruments.OrderBy(x => x.Id).ToList();
         }
 
-        public ICollection<Instruments> GetInstrumentsInLab()
+        public ICollection<Instruments> GetInstrumentsInLab(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Instruments.Where(x=>x.LaboratoryId==Id).OrderBy(x => x.Id).ToList();
         }
 
         public bool InstrumentExists(int Id)
         {
-            throw new NotImplementedException();
+            return _db.Instruments.Any(x => x.Id == Id);
         }
 
-        public bool InstrumentExists(string name)
-        {
-            throw new NotImplementedException();
-        }
 
         public bool Save()
         {
-            throw new NotImplementedException();
+            return _db.SaveChanges() >= 0 ? true : false;
         }
 
         public bool UpdateInstrument(int Id)
         {
-            throw new NotImplementedException();
+            _db.Instruments.Update(_db.Instruments.FirstOrDefault(x => x.Id == Id));
+            return Save();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace OLLIMS_API.Repository.IRepository
         bool AccessLevelsExists(int Id);
         bool AccessLevelsExists(string name);
 
-        bool CreateAccessLevels();
+        bool CreateAccessLevels(AccessLevels al);
 
         bool UpdateAccessLevels(int Id);
         bool DeleteAccessLevels(int Id);

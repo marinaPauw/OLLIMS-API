@@ -15,7 +15,7 @@ namespace OLLIMS_API.Repository.IRepository
         bool SopExists(int Id);
         bool SopExists(string name);
 
-        bool CreateSop();
+        bool CreateSop(Sop sop);
 
         bool UpdateSop(int Id);
         bool DeleteSop(int Id);

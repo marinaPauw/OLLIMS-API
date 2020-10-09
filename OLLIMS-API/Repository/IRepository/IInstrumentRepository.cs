@@ -9,13 +9,12 @@ namespace OLLIMS_API.Repository.IRepository
     public interface IInstrumentRepository
     {
         ICollection<Instruments> GetInstruments();
-        ICollection<Instruments> GetInstrumentsInLab();
+        ICollection<Instruments> GetInstrumentsInLab(int Id);
         Instruments GetInstrument(int InstrumentId);
 
         bool InstrumentExists(int Id);
-        bool InstrumentExists(string name);
 
-        bool CreateInstrument();
+        bool CreateInstrument(Instruments instrument);
 
         bool UpdateInstrument(int Id);
         bool DeleteInstrument(int Id);

@@ -6,11 +6,11 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("laboratories")]
-    public partial class Laboratories
+    public partial class Laboratory
     {
-        public Laboratories()
+        public Laboratory()
         {
-            Instruments = new HashSet<Instruments>();
+            Instruments = new HashSet<Instrument>();
         }
 
         [Key]
@@ -28,6 +28,6 @@ namespace OLLIMS_API.Models
         public DateTime? UpdatedAt { get; set; }
 
         [InverseProperty("Laboratory")]
-        public virtual ICollection<Instruments> Instruments { get; set; }
+        public virtual ICollection<Instrument> Instruments { get; set; }
     }
 }

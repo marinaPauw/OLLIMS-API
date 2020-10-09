@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace OLLIMS_API.Models
 {
     [Table("instruments")]
-    public partial class Instruments
+    public partial class Instrument
     {
         [Key]
         [Column("id")]
@@ -23,13 +23,10 @@ namespace OLLIMS_API.Models
         public DateTime? UpdatedAt { get; set; }
 
         [ForeignKey(nameof(LaboratoryId))]
-        [InverseProperty(nameof(Laboratories.Instruments))]
-        public virtual Laboratories Laboratory { get; set; }
+        [InverseProperty(nameof(Models.Laboratory.Instruments))]
+        public virtual Laboratory Laboratory { get; set; }
         [ForeignKey(nameof(MeasurementId))]
-        [InverseProperty(nameof(Measurements.Instruments))]
-        public virtual Measurements Measurement { get; set; }
-        [ForeignKey(nameof(Sopid))]
-        [InverseProperty("Instruments")]
-        public virtual Sop Sop { get; set; }
+        [InverseProperty(nameof(Models.Measurement.Instruments))]
+        public virtual Measurement Measurement { get; set; }
     }
 }

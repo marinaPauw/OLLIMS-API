@@ -10,8 +10,7 @@ namespace OLLIMS_API.Models
     {
         public Sop()
         {
-            Instruments = new HashSet<Instruments>();
-            SopTrainees = new HashSet<SopTrainees>();
+            SopTrainees = new HashSet<SopTrainee>();
         }
 
         [Key]
@@ -34,9 +33,11 @@ namespace OLLIMS_API.Models
         [Column("updatedAt", TypeName = "datetime")]
         public DateTime? UpdatedAt { get; set; }
 
+        [ForeignKey("Instrument")]
+        [Column("instrumentId", TypeName = "integer")]
+        public int InstrumentId { get; set; }
+
         [InverseProperty("Sop")]
-        public virtual ICollection<Instruments> Instruments { get; set; }
-        [InverseProperty("Sop")]
-        public virtual ICollection<SopTrainees> SopTrainees { get; set; }
+        public virtual ICollection<SopTrainee> SopTrainees { get; set; }
     }
 }

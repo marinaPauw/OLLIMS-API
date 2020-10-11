@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using OLLIMS_API.Models;
 using AutoMapper;
+using OLLIMS_API.Repository;
+using OLLIMS_API.Repository.IRepository;
 
 namespace OLLIMS_API
 {
@@ -31,7 +33,16 @@ namespace OLLIMS_API
             services.AddControllers();
             services.AddDbContext<LIMSDbContext>(options =>
         options.UseSqlServer(Configuration.GetConnectionString("DBConnect")));
-            services.AddAutoMapper(typeof(Mapper));
+            services.AddScoped<IAccessLevelsRepository, AccessLevelRepository>();
+            services.AddScoped<IInstrumentRepository, InstrumentRepository>();
+            services.AddScoped<ILaboratoryRepository, LaboratoryRepository>();
+            services.AddScoped<IMeasurementRepository, MeasurementRepository>();
+            services.AddScoped<IPersonelRepository, PersonelRepository>();
+            services.AddScoped<ISopRepository, SOPRepository>();
+            services.AddScoped<IMeasurementValueRepository, MeasurementValueRepository>();
+            services.AddScoped<ISopTraineesRepository, SOPTraineeRepository>();
+            ;           services.AddAutoMapper(typeof(Mapper));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

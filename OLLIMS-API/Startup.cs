@@ -41,7 +41,7 @@ namespace OLLIMS_API
             services.AddScoped<ISopRepository, SOPRepository>();
             services.AddScoped<IMeasurementValueRepository, MeasurementValueRepository>();
             services.AddScoped<ISopTraineesRepository, SOPTraineeRepository>();
-            ;           services.AddAutoMapper(typeof(Mapper));
+            services.AddAutoMapper(typeof(Mapper));
 
         }
 

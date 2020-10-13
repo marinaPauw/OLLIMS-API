@@ -5,9 +5,10 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    public partial class AccessLevelDTO
+    public class AccessLevelDTO
     {
         public int Id { get; set; }
+        [Required]
         public string Name { get; set; }
     }
 }

@@ -5,11 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 { 
-    public partial class InstrumentDTO
+    public class InstrumentDTO
     {
         public int Id { get; set; }
-        public int? LaboratoryId { get; set; }
-        public int? MeasurementId { get; set; }
-        public int? Sopid { get; set; }
+
+        [Required]
+        public int LaboratoryId { get; set; }
+        public LaboratoryDTO Laboratory { get; set; }
+        [Required]
+        public int MeasurementId { get; set; }
+        public MeasurementDTO Measurement { get; set; }
+        [Required]
+        public int SOPId { get; set; }
+        public InstrumentSOPDTO SOP { get; set; }
     }
 }

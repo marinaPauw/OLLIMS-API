@@ -8,14 +8,14 @@ namespace OLLIMS_API.Repository.IRepository
 {
     public interface ISopRepository
     {
-        ICollection<Sop> GetSops();
-        ICollection<Sop> GetSopsForInstrument(int InstrumentId);
-        Sop GetSop(int SopId);
+        ICollection<InstrumentSOP> GetSops();
+        ICollection<InstrumentSOP> GetSopsForInstrument(int InstrumentId);
+        InstrumentSOP GetSop(int SopId);
 
         bool SopExists(int Id);
         bool SopExists(string name);
 
-        bool CreateSop(Sop sop);
+        bool CreateSop(InstrumentSOP sop);
 
         bool UpdateSop(int Id);
         bool DeleteSop(int Id);

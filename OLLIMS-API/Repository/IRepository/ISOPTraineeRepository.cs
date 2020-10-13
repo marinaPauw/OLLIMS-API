@@ -6,18 +6,18 @@ using System.Threading.Tasks;
 
 namespace OLLIMS_API.Repository.IRepository
 {
-    public interface ISopTraineesRepository
+    public interface ISOPTraineeRepository
     {
-        ICollection<SopTrainee> GetSopTrainees();
+        ICollection<SOPTrainee> GetSOPTrainees();
         ICollection<Employee> GetAllTraineesForSOP(int Id);
-        SopTrainee GetSopTrainee(int SopTraineesId);
+        SOPTrainee GetSOPTrainee(int SOPTraineesId);
 
-        bool SopTraineesExists(int Id);
+        bool SOPTraineesExists(int Id);
 
-        bool CreateSopTrainees(SopTrainee st);
+        bool CreateSOPTrainees(SOPTrainee st);
 
-        bool UpdateSopTrainees(int Id);
-        bool DeleteSopTrainees(int Id);
+        bool UpdateSOPTrainees(int Id);
+        bool DeleteSOPTrainees(int Id);
 
         bool Save();
 

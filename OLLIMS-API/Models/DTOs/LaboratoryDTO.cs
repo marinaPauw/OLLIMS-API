@@ -5,13 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    public partial class LaboratoryDTO
+    public class LaboratoryDTO
     {
-            
         public int Id { get; set; }
+        [Required]
         public string LaboratoryName { get; set; }
         public string Description { get; set; }
 
-        public virtual ICollection<InstrumentDTO> Instruments { get; set; }
     }
 }

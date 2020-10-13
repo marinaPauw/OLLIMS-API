@@ -15,9 +15,9 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreatePersonel(Sop sop)
+        public bool CreatePersonel(Employee employee)
         {
-            _db.Sop.Add(sop);
+            _db.Personel.Add(employee);
             return Save();
         }
 

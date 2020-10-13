@@ -5,14 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    public partial class SopTraineeDTO
+    public class SOPTraineeDTO
     {
         public int Id { get; set; }
-        public int? Sopid { get; set; }
-        public int? PersonId { get; set; }
+        [Required]
         public string CertificateUrl { get; set; }
-        public DateTime? TrainedAt { get; set; }
-        public virtual Employee Person { get; set; }
-        public virtual Sop Sop { get; set; }
+        [Required]
+        public DateTime TrainedAt { get; set; }
+        [Required]
+        public int EmployeeId { get; set; }
+        public EmployeeDTO Employee { get; set; }
+        [Required]
+        public int SOPId { get; set; }
+        public InstrumentSOPDTO SOP { get; set; }
     }
 }

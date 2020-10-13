@@ -30,9 +30,10 @@ namespace OLLIMS_API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            services.AddDbContext<LIMSDbContext>(options =>
-        options.UseSqlServer(Configuration.GetConnectionString("DBConnect")));
+
+            services.AddCors();
+            services.AddDbContext<LIMSDbContext>
+                (options => options.UseSqlServer(Configuration.GetConnectionString("DBConnect")));
             services.AddScoped<IAccessLevelsRepository, AccessLevelRepository>();
             services.AddScoped<IInstrumentRepository, InstrumentRepository>();
             services.AddScoped<ILaboratoryRepository, LaboratoryRepository>();
@@ -40,9 +41,10 @@ namespace OLLIMS_API
             services.AddScoped<IPersonelRepository, PersonelRepository>();
             services.AddScoped<ISopRepository, SOPRepository>();
             services.AddScoped<IMeasurementValueRepository, MeasurementValueRepository>();
-            services.AddScoped<ISopTraineesRepository, SOPTraineeRepository>();
+            services.AddScoped<ISOPTraineeRepository, SOPTraineeRepository>();
             services.AddAutoMapper(typeof(Mapper));
 
+            services.AddControllers();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

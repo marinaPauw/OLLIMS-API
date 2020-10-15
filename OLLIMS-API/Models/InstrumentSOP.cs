@@ -20,7 +20,7 @@ namespace OLLIMS_API.Models
         public string DocumentUrl { get; set; }
         [Required]
         public int InstrumentId { get; set; }
-        [ForeignKey("Instrument")]
+        [ForeignKey("Instruments")]
         public Instrument Instrument { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

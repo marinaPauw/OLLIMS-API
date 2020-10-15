@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OLLIMS_API.Models;
 
 namespace OLLIMS_API.Migrations
 {
     [DbContext(typeof(LIMSDbContext))]
-    partial class LIMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201015070418_AddedForeignKeys")]
+    partial class AddedForeignKeys
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

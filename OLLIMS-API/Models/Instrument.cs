@@ -16,14 +16,6 @@ namespace OLLIMS_API.Models
 
         [ForeignKey("LaboratoryId")]
         public Laboratory Laboratory { get; set; }
-        [Required]
-        public int MeasurementId { get; set; }
-        [ForeignKey("MeasurementId")]
-        public Measurement Measurement { get; set; }
-        [Required]
-        public int SOPId { get; set; }
-        [ForeignKey("SOPId")]
-        public InstrumentSOP SOP { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }
 

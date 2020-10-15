@@ -17,8 +17,8 @@ namespace OLLIMS_API.Mappings
             CreateMap<Instrument, InstrumentDTO>().ReverseMap();
             CreateMap<Measurement, MeasurementDTO>().ReverseMap();
             CreateMap<MeasurementValue, MeasurementValueDTO>().ReverseMap();
-            CreateMap<Sop, InstrumentSOPDTO>().ReverseMap();
-            CreateMap<SopTrainee, SopTraineeDTO>().ReverseMap();
+            CreateMap<InstrumentSOP, InstrumentSOPDTO>().ReverseMap();
+            CreateMap<SOPTrainee, SOPTraineeDTO>().ReverseMap();
         }
     }
 }

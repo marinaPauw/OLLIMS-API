@@ -5,15 +5,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    public partial class MeasurementDTO
+    public class MeasurementDTO
     {
-        
+
         public int Id { get; set; }
-        public int? InstrumentId { get; set; }
+        [Required]
         public string Name { get; set; }
         public double? LowerLimit { get; set; }
         public double? UpperLimit { get; set; }
-        public virtual ICollection<InstrumentDTO> Instruments { get; set; }
-        public virtual ICollection<MeasurementValueDTO> MeasurementValues { get; set; }
+        [Required]
+        public int InstrumentId { get; set; }
+        public InstrumentDTO Instrument { get; set; }
     }
 }

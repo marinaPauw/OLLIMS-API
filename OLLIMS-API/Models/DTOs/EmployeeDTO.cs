@@ -5,13 +5,17 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    public partial class EmployeeDTO
+    public class EmployeeDTO
     {
         public int Id { get; set; }
+        [Required]
         public string Firstname { get; set; }
+        [Required]
         public string Lastname { get; set; }
+        [Required]
         public string Position { get; set; }
-        public int? AccessLevelId { get; set; }
-        public virtual ICollection<SopTrainee> SopTrainees { get; set; }
+        [Required]
+        public int AccessLevelId { get; set; }
+        public AccessLevelDTO AccessLevel { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace OLLIMS_API.Repository
 {
-    public class SOPTraineeRepository : ISopTraineesRepository
+    public class SOPTraineeRepository : ISOPTraineeRepository
     {
         private readonly LIMSDbContext _db;
 
@@ -15,13 +15,13 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateSopTrainees(SopTrainee st)
+        public bool CreateSOPTrainees(SOPTrainee st)
         {
             _db.SopTrainees.Add(st);
             return Save();
         }
 
-        public bool DeleteSopTrainees(int Id)
+        public bool DeleteSOPTrainees(int Id)
         {
             _db.SopTrainees.Remove(_db.SopTrainees.FirstOrDefault(x => x.Id == Id));
             return Save();
@@ -29,15 +29,15 @@ namespace OLLIMS_API.Repository
 
         public ICollection<Employee> GetAllTraineesForSOP(int Id)
         {
-            return _db.SopTrainees.Where(x => x.Sop.Id == Id).OrderBy(x => x.Sop).Select(x=>x.Person).ToList();
+            return _db.SopTrainees.Where(x => x.SOP.Id == Id).OrderBy(x => x.SOP).Select(x=>x.Employee).ToList();
         }
 
-        public SopTrainee GetSopTrainee(int Id)
+        public SOPTrainee GetSOPTrainee(int Id)
         {
             return _db.SopTrainees.FirstOrDefault(x => x.Id == Id);
         }
 
-        public ICollection<SopTrainee> GetSopTrainees()
+        public ICollection<SOPTrainee> GetSOPTrainees()
         {
             return _db.SopTrainees.OrderBy(x => x.Id).ToList();
         }
@@ -47,14 +47,14 @@ namespace OLLIMS_API.Repository
             return _db.SaveChanges() >= 0 ? true : false;
         }
 
-        public bool SopTraineesExists(int Id)
+        public bool SOPTraineesExists(int Id)
         {
             return _db.SopTrainees.Any(x => x.Id == Id);
         }
 
         
 
-        public bool UpdateSopTrainees(int Id)
+        public bool UpdateSOPTrainees(int Id)
         {
             _db.SopTrainees.Update(_db.SopTrainees.FirstOrDefault(x => x.Id == Id));
             return Save();

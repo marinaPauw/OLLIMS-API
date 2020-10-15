@@ -5,14 +5,12 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OLLIMS_API.Models
 {
-    [Table("accessLevels")]
-    public partial class AccessLevel
+    [Table("AccessLevels")]
+    public class AccessLevel
     {
         [Key]
-        [Column("id")]
         public int Id { get; set; }
-        [Column("name")]
-        [StringLength(255)]
+        [Required]
         public string Name { get; set; }
     }
 }

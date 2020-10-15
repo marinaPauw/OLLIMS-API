@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using OLLIMS_API.Models;
 
 namespace OLLIMS_API.Migrations
 {
     [DbContext(typeof(LIMSDbContext))]
-    partial class LIMSDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201015064856_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,8 +67,6 @@ namespace OLLIMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AccessLevelId");
-
                     b.ToTable("Personel");
                 });
 
@@ -83,12 +83,16 @@ namespace OLLIMS_API.Migrations
                     b.Property<int>("LaboratoryId")
                         .HasColumnType("int");
 
+                    b.Property<int>("MeasurementId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SOPId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("LaboratoryId");
 
                     b.ToTable("Instruments");
                 });
@@ -113,9 +117,6 @@ namespace OLLIMS_API.Migrations
                     b.Property<int>("InstrumentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("Instruments")
-                        .HasColumnType("int");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -128,8 +129,6 @@ namespace OLLIMS_API.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("Instruments");
 
                     b.ToTable("InstrumentSOPs");
                 });
@@ -187,8 +186,6 @@ namespace OLLIMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("InstrumentId");
-
                     b.ToTable("Measurements");
                 });
 
@@ -212,8 +209,6 @@ namespace OLLIMS_API.Migrations
                         .HasColumnType("real");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("MeasurementId");
 
                     b.ToTable("MeasurementValues");
                 });
@@ -242,69 +237,7 @@ namespace OLLIMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("EmployeeId");
-
-                    b.HasIndex("SOPId");
-
                     b.ToTable("SOP_trainees");
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.Employee", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.AccessLevel", "AccessLevel")
-                        .WithMany()
-                        .HasForeignKey("AccessLevelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.Instrument", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.Laboratory", "Laboratory")
-                        .WithMany()
-                        .HasForeignKey("LaboratoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.InstrumentSOP", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.Instrument", "Instrument")
-                        .WithMany()
-                        .HasForeignKey("Instruments");
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.Measurement", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.Instrument", "Instrument")
-                        .WithMany()
-                        .HasForeignKey("InstrumentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.MeasurementValue", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.Measurement", "Measurement")
-                        .WithMany()
-                        .HasForeignKey("MeasurementId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("OLLIMS_API.Models.SOPTrainee", b =>
-                {
-                    b.HasOne("OLLIMS_API.Models.Employee", "Employee")
-                        .WithMany()
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("OLLIMS_API.Models.InstrumentSOP", "SOP")
-                        .WithMany()
-                        .HasForeignKey("SOPId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

@@ -15,31 +15,31 @@ namespace OLLIMS_API.Repository
         {
             _db = db;
         }
-        public bool CreateSop(Sop sop)
+        public bool CreateSop(InstrumentSOP sop)
         {
-            _db.Sop.Add(sop);
+            _db.InstrumentSOP.Add(sop);
             return Save();
         }
 
         public bool DeleteSop(int Id)
         {
-            _db.Sop.Remove(_db.Sop.FirstOrDefault(x => x.Id == Id));
+            _db.InstrumentSOP.Remove(_db.InstrumentSOP.FirstOrDefault(x => x.Id == Id));
             return Save();
         }
 
-        public Sop GetSop(int Id)
+        public InstrumentSOP GetSop(int Id)
         {
-            return _db.Sop.FirstOrDefault(x => x.Id == Id);
+            return _db.InstrumentSOP.FirstOrDefault(x => x.Id == Id);
         }
 
-        public ICollection<Sop> GetSops()
+        public ICollection<InstrumentSOP> GetSops()
         {
-            return _db.Sop.OrderBy(x => x.Id).ToList();
+            return _db.InstrumentSOP.OrderBy(x => x.Id).ToList();
         }
 
-        public ICollection<Sop> GetSopsForInstrument(int Id)
+        public ICollection<InstrumentSOP> GetSopsForInstrument(int Id)
         {
-            return _db.Sop.Where(x => x.Id == Id).OrderBy(x => x.Id).ToList();
+            return _db.InstrumentSOP.Where(x => x.Id == Id).OrderBy(x => x.Id).ToList();
         }
 
         public bool Save()
@@ -49,17 +49,17 @@ namespace OLLIMS_API.Repository
 
         public bool SopExists(int Id)
         {
-            return _db.Sop.Any(x => x.Id == Id);
+            return _db.InstrumentSOP.Any(x => x.Id == Id);
         }
 
         public bool SopExists(string name)
         {
-            return _db.Sop.Any(x => x.Name.ToLower().Trim() == name.ToLower().Trim());
+            return _db.InstrumentSOP.Any(x => x.Name.ToLower().Trim() == name.ToLower().Trim());
         }
 
         public bool UpdateSop(int Id)
         {
-            _db.Sop.Update(_db.Sop.FirstOrDefault(x => x.Id == Id));
+            _db.InstrumentSOP.Update(_db.InstrumentSOP.FirstOrDefault(x => x.Id == Id));
             return Save();
         }
     }

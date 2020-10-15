@@ -13,7 +13,7 @@ namespace OLLIMS_API.Repository.IRepository
 
         bool PersonelExists(int Id);
 
-        bool CreatePersonel(Sop sop);
+        bool CreatePersonel(Employee Employee);
 
         bool UpdatePersonel(int Id);
         bool DeletePersonel(int Id);
